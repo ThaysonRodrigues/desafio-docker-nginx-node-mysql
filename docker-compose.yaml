@@ -10,8 +10,6 @@ services:
       - "8080:80"
     networks:
       - app-network
-    depends_on:
-      - db
 
   db:
     image: mysql:5.7
@@ -34,12 +32,12 @@ services:
     build:
       context: node
       dockerfile: Dockerfile
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 50s node app.js
     ports:
       - "3000:3000"
     networks:
       - app-network
     depends_on:
-      - db
       - nginx
 
 networks:

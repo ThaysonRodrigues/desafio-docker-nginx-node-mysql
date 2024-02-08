@@ -2,7 +2,7 @@ FROM node:15
 
 WORKDIR /app
 
-COPY app.js .
+RUN npm install
 
 ENV DOCKERIZE_VERSION v0.6.1
 

@@ -2,6 +2,12 @@ FROM node:15
 
 WORKDIR /app
 
+COPY package*.json ./
+
+RUN npm install
+
+run npm install express --save
+
 COPY . .
 
 ENV DOCKERIZE_VERSION v0.6.1

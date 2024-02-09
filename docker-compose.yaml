@@ -34,7 +34,7 @@ services:
     build:
       context: node
       dockerfile: Dockerfile
-    entrypoint: dockerize -wait tcp://db:3306 -timeout 50s node app.js
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 50s sh -c "npm install && node app.js"
     volumes:
       - ./node:/app
     ports:
